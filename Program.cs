@@ -16,11 +16,14 @@ namespace BlogsConsole
             try
             {
                 string choice;
+                string secondChoice;
                 do
                 {
                     Console.WriteLine("Enter your selection:");
                     Console.WriteLine("1) Display all blogs");
                     Console.WriteLine("2) Add Blog");
+                    Console.WriteLine("3) Create Post");
+                    Console.WriteLine("4) Display Posts");
                     Console.WriteLine("Enter q to quit");
                     choice = Console.ReadLine();
                     Console.Clear();
@@ -47,6 +50,29 @@ namespace BlogsConsole
                         var db = new BloggingContext();
                         db.AddBlog(blog);
                         logger.Info("Blog added - {name}", blog.Name);
+                    }
+                    else if (choice == "3")
+                    {
+                        Console.WriteLine("Select the blog you would post to:  ");
+                        var db = new BloggingContext();
+                        var query = db.Blogs.OrderBy(b => b.Name);
+
+                        foreach (var item in query)
+                        {
+                            Console.WriteLine(item.BlogId + ") " + item.Name);
+                        }
+
+                        secondChoice = Console.ReadLine();
+
+                        
+                       // Console.WriteLine("Enter name of post");
+                       // var post = new Post { Title = Console.ReadLine()};
+                       // Console.WriteLine("Enter the Content");
+                        
+                    }
+                    else if (choice == "4")
+                    {
+                        
                     }
                     Console.WriteLine();
                 } while (choice.ToLower() != "q");
