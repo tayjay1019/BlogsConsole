@@ -18,7 +18,7 @@ namespace BlogsConsole
             try
             {
                 string choice;
-                string secondChoice;
+                //string secondChoice;
                 do
                 {
                     Console.WriteLine("Enter your selection:");
@@ -75,11 +75,24 @@ namespace BlogsConsole
 
                             blog.Posts.Add(post);
                             db.AddPost(post);
+
+                            logger.Info("Post added - {name}", post.Title);
                         }
                         
                     }
                     else if (choice == "4")
                     {
+                        // Display Posts
+                        Console.WriteLine("Choose the blog to view posts:");
+                        var db = new BloggingContext();
+                        var blog = GetBlog(db);
+                        if (blog != null)
+                        {
+                            foreach (Post p in blog.Posts)
+                            {
+                                Console.WriteLine($"{p.PostId}: {p.Title}");
+                            }
+                        }
                         
                     }
                     else if (choice == "5")
