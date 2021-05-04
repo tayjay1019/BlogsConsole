@@ -66,7 +66,6 @@ namespace BlogsConsole
                         if (blog != null)
                         {
                             var post = new Post();
-                            post.Blog = blog;
                             post.BlogId = blog.BlogId;
                             Console.WriteLine("Enter name of post");
                             post.Title = Console.ReadLine();
