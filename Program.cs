@@ -59,21 +59,23 @@ namespace BlogsConsole
                     }
                     else if (choice == "3")
                     {
+                        // Add Post
                         Console.WriteLine("Select the blog you would post to:  ");
                         var db = new BloggingContext();
-                        var query = db.Blogs.OrderBy(b => b.Name);
-
-                        foreach (var item in query)
+                        var blog = GetBlog(db);
+                        if (blog != null)
                         {
-                            Console.WriteLine(item.BlogId + ") " + item.Name);
+                            var post = new Post();
+                            post.Blog = blog;
+                            post.BlogId = blog.BlogId;
+                            Console.WriteLine("Enter name of post");
+                            post.Title = Console.ReadLine();
+                            Console.WriteLine("Enter the Content");
+                            post.Content = Console.ReadLine();
+
+                            blog.Posts.Add(post);
+                            db.AddPost(post);
                         }
-
-                        secondChoice = Console.ReadLine();
-
-                        
-                       // Console.WriteLine("Enter name of post");
-                       // var post = new Post { Title = Console.ReadLine()};
-                       // Console.WriteLine("Enter the Content");
                         
                     }
                     else if (choice == "4")
