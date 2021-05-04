@@ -66,13 +66,14 @@ namespace BlogsConsole
                         if (blog != null)
                         {
                             var post = new Post();
+                            post.Blog = blog;
                             post.BlogId = blog.BlogId;
                             Console.WriteLine("Enter name of post");
                             post.Title = Console.ReadLine();
                             Console.WriteLine("Enter the Content");
                             post.Content = Console.ReadLine();
 
-                            blog.Posts.Add(post);
+                            //blog.Posts.Add(post);
                             db.AddPost(post);
 
                             logger.Info("Post added - {name}", post.Title);
