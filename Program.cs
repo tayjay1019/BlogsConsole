@@ -26,6 +26,7 @@ namespace BlogsConsole
                     Console.WriteLine("2) Add Blog");
                     Console.WriteLine("3) Create Post");
                     Console.WriteLine("4) Display Posts");
+                    Console.WriteLine("5) Delete Blog");
                     Console.WriteLine("Enter q to quit");
                     choice = Console.ReadLine();
                     Console.Clear();
@@ -101,6 +102,11 @@ namespace BlogsConsole
                     else if (choice == "4")
                     {
                         
+                    }
+                    else if (choice == "5")
+                    {
+                        // delete blog
+                        Console.WriteLine("Choose the blog to delete:");
                     }
                     Console.WriteLine();
                 } while (choice.ToLower() != "q");
