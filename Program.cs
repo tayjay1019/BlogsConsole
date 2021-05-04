@@ -87,9 +87,12 @@ namespace BlogsConsole
                         var blog = GetBlog(db);
                         if (blog != null)
                         {
-                            foreach (Post p in blog.Posts)
+                            var query = db.Posts.OrderBy(p => p.Title);
+
+                            Console.WriteLine($"{query.Count()} Posts returned");
+                            foreach (var item in query)
                             {
-                                Console.WriteLine($"{p.PostId}: {p.Title}");
+                                Console.WriteLine(item.Title);
                             }
                         }
                         
